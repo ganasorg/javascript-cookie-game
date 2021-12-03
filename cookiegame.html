@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+
+    <style>
+
+    </style>
+<body>
+
+    <center>
+    <h1>Javascript Clicker</h1>
+    <h2 id="number">0</h2>
+    <h3 id="autodisplay">Auto Click Power:</h3>
+    <h3 id="clickdisplay">Clicking Power:</h3>
+    <div>
+        <input type="button" value="Click me!" onclick="moneyIncrement()">
+        <input type="button" value="Auto Click" id="auto" onclick="autoIncrement()">
+    </div>
+    </center>
+
+    <script>
+        var money = 0
+        var clickValue = 1
+        var autoValue = 0
+        var toggle = 0
+
+        function autoIncrement(){
+            money = money - 20
+            autoValue = autoValue + 1
+            document.getElementById("number").innerHTML = money
+            document.getElementById("autodisplay").innerHTML = "Auto Click Power: " + autoValue
+
+            if(toggle == 0){
+                toggle++
+            
+            if(money < 20){
+                autoValue = 0
+                money = money + 20
+                document.getElementById("number").innerHTML = money
+                document.getElementById("autodisplay").innerHTML = "Auto Click Power: " + autoValue
+            }
+
+                setInterval(function(){
+                    money = money + autoValue
+                    document.getElementById("number").innerHTML = money
+                }, 1000);
+            }
+        }
+
+        function moneyIncrement(){
+            money = money + clickValue
+            document.getElementById("number").innerHTML = money
+        }
+    </script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            initializeGame()
+        }) -->
+
+        // function initializeGame(){
+        //     setInterval(function(){
+        //         if(money >= 20){
+        //             document.getElementById("auto").style.display = ""
+        //         }else{
+        //             document.getElementById("auto").style.display = "none"
+        //         }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
